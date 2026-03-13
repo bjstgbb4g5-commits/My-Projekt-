@@ -1,0 +1,9 @@
+void UQuestManager::UnregisterDelegates()
+{
+    // Здесь отписываемся от всех делегатов, на которые подписались в RegisterDelegates
+    // Пример:
+    // if (UCombatEventSubsystem* CombatEvents = GetWorld()->GetSubsystem<UCombatEventSubsystem>())
+    // {
+    //     CombatEvents->OnEnemyKilled.RemoveDynamic(this, &UQuestManager::OnEnemyKilled);
+    // }
+}

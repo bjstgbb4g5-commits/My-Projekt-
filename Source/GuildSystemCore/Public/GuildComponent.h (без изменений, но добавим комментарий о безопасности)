@@ -1,0 +1,36 @@
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Components/ActorComponent.h"
+#include "GuildTypes.h"
+#include "GuildComponent.generated.h"
+
+UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
+class GUILDSYSTEMCORE_API UGuildComponent : public UActorComponent
+{
+    GENERATED_BODY()
+
+public:
+    UGuildComponent();
+
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+    UFUNCTION(BlueprintCallable, Category = "Guild")
+    void SetGuild(int32 InGuildId, EGuildRank InRank);
+
+    UFUNCTION(BlueprintCallable, Category = "Guild")
+    int32 GetGuildId() const { return GuildId; }
+
+    UFUNCTION(BlueprintCallable, Category = "Guild")
+    EGuildRank GetRank() const { return Rank; }
+
+    UFUNCTION(BlueprintCallable, Category = "Guild")
+    bool HasPermission(EGuildPermission Permission) const;
+
+protected:
+    UPROPERTY(Replicated)
+    int32 GuildId;
+
+    UPROPERTY(Replicated)
+    EGuildRank Rank;
+};

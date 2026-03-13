@@ -1,0 +1,3 @@
+// ... внутри класса добавляем метод UnregisterDelegates
+public:
+    void UnregisterDelegates();

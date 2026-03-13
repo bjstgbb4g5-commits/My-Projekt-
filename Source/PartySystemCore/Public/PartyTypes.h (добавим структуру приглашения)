@@ -1,0 +1,46 @@
+#pragma once
+
+#include "CoreMinimal.h"
+#include "PartyTypes.generated.h"
+
+UENUM(BlueprintType)
+enum class EPartyRole : uint8
+{
+    Member,
+    Assistant,
+    Leader
+};
+
+USTRUCT(BlueprintType)
+struct FPartyMemberData
+{
+    GENERATED_BODY()
+
+    UPROPERTY()
+    FUniqueNetIdRepl PlayerId;
+
+    UPROPERTY()
+    EPartyRole Role = EPartyRole::Member;
+
+    friend FArchive& operator<<(FArchive& Ar, FPartyMemberData& Data)
+    {
+        Ar << Data.PlayerId;
+        Ar << Data.Role;
+        return Ar;
+    }
+};
+
+USTRUCT()
+struct FPartyInviteData
+{
+    GENERATED_BODY()
+
+    UPROPERTY()
+    int32 PartyId = -1;
+
+    UPROPERTY()
+    FUniqueNetIdRepl InviterId;
+
+    UPROPERTY()
+    FDateTime ExpireTime;
+};
