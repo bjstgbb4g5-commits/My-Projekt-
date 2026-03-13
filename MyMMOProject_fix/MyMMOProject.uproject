@@ -1,0 +1,13 @@
+{
+    "FileVersion": 3,
+    "EngineAssociation": "5.5",
+    "Category": "",
+    "Description": "MMO Backend Project",
+    "Modules": [
+        {
+            "Name": "MyMMOProject",
+            "Type": "Runtime",
+            "LoadingPhase": "Default"
+        }
+    ]
+}
