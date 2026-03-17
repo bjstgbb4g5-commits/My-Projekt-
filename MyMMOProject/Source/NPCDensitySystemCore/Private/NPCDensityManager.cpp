@@ -1,0 +1,6 @@
+#include "NPCDensityManager.h"
+#include "NPCLifeSimulationCore/Public/NPCLifeSubsystem.h"
+#include "NPCLifeSimulationCore/Public/NPCLifeComponent.h"
+#include "GameFramework/PlayerController.h"
+#include "Engine/World.h"
+#include "Kismet/GameplayStatics.h"
