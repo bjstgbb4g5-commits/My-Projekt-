@@ -12,11 +12,6 @@ public class AIDirectorCore : ModuleRules
             "CoreUObject",
             "Engine",
             "NetCore",
-            "AntiCheatSystemCore",
-            "LiveEventSystemCore",
-            "WorldBossSystemCore",
-            "MarketplaceSystemCore",
-            "GuildWarSystemCore",
             "AICoreSystem"
         });
     }

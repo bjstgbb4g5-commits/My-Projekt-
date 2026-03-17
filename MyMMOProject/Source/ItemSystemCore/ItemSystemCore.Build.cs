@@ -11,7 +11,7 @@ public class ItemSystemCore : ModuleRules
             "Core",
             "CoreUObject",
             "Engine",
-            "InventorySystemCore" // для доступа к FItemInstance
-        });
+         }
+       );
     }
 }

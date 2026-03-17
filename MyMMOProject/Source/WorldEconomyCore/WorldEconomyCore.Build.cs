@@ -14,7 +14,6 @@ public class WorldEconomyCore : ModuleRules
             "NetCore",
             "WorldGeneratorCore",
             "WorldPopulationCore",
-            "WorldEventCore"
         });
     }
 }
