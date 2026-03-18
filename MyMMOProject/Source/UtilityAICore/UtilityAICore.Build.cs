@@ -1,8 +1,9 @@
+
 using UnrealBuildTool;
 
-public class NPCLifeSimulationCore : ModuleRules
+public class UtilityAICore : ModuleRules
 {
-    public NPCLifeSimulationCore(ReadOnlyTargetRules Target) : base(Target)
+    public UtilityAICore(ReadOnlyTargetRules Target) : base(Target)
     {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
@@ -16,9 +17,9 @@ public class NPCLifeSimulationCore : ModuleRules
 
         PrivateDependencyModuleNames.AddRange(new string[]
         {
-            "NPCActivitySystemCore",
             "NPCPerceptionCore",
-            "UtilityAICore",
+            "NPCLifeSimulationCore",
+            "NPCActivitySystemCore",
             "CityEventSystemCore"
         });
     }
