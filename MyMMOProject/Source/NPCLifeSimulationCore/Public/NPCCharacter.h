@@ -8,6 +8,9 @@ class UNPCLifeComponent;
 class UNPCActivityComponent;
 class UNPCPerceptionComponent;
 class UUtilityAIComponent;
+class UCrowdAgentComponent;
+class UNPCMemoryComponent;
+class USocialComponent;
 
 UCLASS()
 class NPCLIFESIMULATIONCORE_API ANPCCharacter : public ACharacter
@@ -37,4 +40,17 @@ protected:
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="NPC")
     UUtilityAIComponent* UtilityAIComponent;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="NPC")
+    UCrowdAgentComponent* CrowdAgentComponent;
+
+    /*
+    Advanced NPC systems
+    */
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="NPC")
+    UNPCMemoryComponent* MemoryComponent;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="NPC")
+    USocialComponent* SocialComponent;
 };

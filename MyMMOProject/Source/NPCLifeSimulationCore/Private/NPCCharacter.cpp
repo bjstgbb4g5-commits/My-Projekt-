@@ -4,11 +4,9 @@
 #include "NPCActivityComponent.h"
 #include "NPCPerceptionComponent.h"
 #include "UtilityAIComponent.h"
-
-#include "NPCPerceptionSubsystem.h"
-#include "UtilityAISubsystem.h"
-
-#include "Engine/World.h"
+#include "CrowdAgentComponent.h"
+#include "NPCMemoryComponent.h"
+#include "SocialComponent.h"
 
 ANPCCharacter::ANPCCharacter()
 {
@@ -19,80 +17,44 @@ ANPCCharacter::ANPCCharacter()
     */
 
     LifeComponent =
-        CreateDefaultSubobject<UNPCLifeComponent>(TEXT("NPCLifeComponent"));
+        CreateDefaultSubobject<UNPCLifeComponent>(
+            TEXT("NPCLifeComponent"));
 
     ActivityComponent =
-        CreateDefaultSubobject<UNPCActivityComponent>(TEXT("NPCActivityComponent"));
+        CreateDefaultSubobject<UNPCActivityComponent>(
+            TEXT("NPCActivityComponent"));
 
     PerceptionComponent =
-        CreateDefaultSubobject<UNPCPerceptionComponent>(TEXT("NPCPerceptionComponent"));
+        CreateDefaultSubobject<UNPCPerceptionComponent>(
+            TEXT("NPCPerceptionComponent"));
 
     UtilityAIComponent =
-        CreateDefaultSubobject<UUtilityAIComponent>(TEXT("UtilityAIComponent"));
+        CreateDefaultSubobject<UUtilityAIComponent>(
+            TEXT("UtilityAIComponent"));
+
+    CrowdAgentComponent =
+        CreateDefaultSubobject<UCrowdAgentComponent>(
+            TEXT("CrowdAgentComponent"));
+
+    /*
+    Advanced systems
+    */
+
+    MemoryComponent =
+        CreateDefaultSubobject<UNPCMemoryComponent>(
+            TEXT("MemoryComponent"));
+
+    SocialComponent =
+        CreateDefaultSubobject<USocialComponent>(
+            TEXT("SocialComponent"));
 }
 
 void ANPCCharacter::BeginPlay()
 {
     Super::BeginPlay();
-
-    UWorld* World = GetWorld();
-    if (!World) return;
-
-    /*
-    Register NPC in Perception system
-    */
-
-    if (UNPCPerceptionSubsystem* PerceptionSubsystem =
-        World->GetSubsystem<UNPCPerceptionSubsystem>())
-    {
-        if (UNPCPerceptionManager* Manager =
-            PerceptionSubsystem->GetManager())
-        {
-            Manager->RegisterNPC(this);
-        }
-    }
-
-    /*
-    Register NPC in Utility AI system
-    */
-
-    if (UUtilityAISubsystem* UtilitySubsystem =
-        World->GetSubsystem<UUtilityAISubsystem>())
-    {
-        if (UUtilityAIManager* Manager =
-            UtilitySubsystem->GetManager())
-        {
-            Manager->RegisterNPC(this);
-        }
-    }
 }
 
 void ANPCCharacter::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
-    UWorld* World = GetWorld();
-
-    if (World)
-    {
-        if (UNPCPerceptionSubsystem* PerceptionSubsystem =
-            World->GetSubsystem<UNPCPerceptionSubsystem>())
-        {
-            if (UNPCPerceptionManager* Manager =
-                PerceptionSubsystem->GetManager())
-            {
-                Manager->UnregisterNPC(this);
-            }
-        }
-
-        if (UUtilityAISubsystem* UtilitySubsystem =
-            World->GetSubsystem<UUtilityAISubsystem>())
-        {
-            if (UUtilityAIManager* Manager =
-                UtilitySubsystem->GetManager())
-            {
-                Manager->UnregisterNPC(this);
-            }
-        }
-    }
-
     Super::EndPlay(EndPlayReason);
 }
